@@ -1,10 +1,10 @@
-FROM    quay.io/centos/centos:stream8
-LABEL   description="Centos stream 8 with python3.8 and pandoc"
+FROM    quay.io/centos/centos:stream9
+LABEL   description="Centos stream 9 with python3.11 and pandoc"
 
-RUN     dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y && \
+RUN     dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y && \
         dnf config-manager --enable epel && \
-        dnf config-manager --set-enabled powertools && \
-        dnf -y install git python38 python38-devel gcc unzip make pandoc && \
+        /usr/bin/crb enable && \
+        dnf -y install git python3.11 python3.11-devel gcc unzip make pandoc && \
         dnf clean all && \
         rm -rf /var/cache/yum
 
